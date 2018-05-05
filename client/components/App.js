@@ -2,14 +2,6 @@ import React, { Component } from 'react';
 import '../css/App.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import EnhancedTable from './sortableTable.js';
-//import MongoClient from 'mongodb';
-
-//var uri = "mongodb://Azzaid:cdOWFJqrHLI9VNVM@azzaidmdb-shard-00-00-r422z.mongodb.net:27017,azzaidmdb-shard-00-01-r422z.mongodb.net:27017,azzaidmdb-shard-00-02-r422z.mongodb.net:27017/test?ssl=true&replicaSet=AzzaidMDB-shard-0&authSource=admin";
-//MongoClient.connect(uri, function(err, db) {
-  //if (err) throw err;
-  //console.log("Database created!");
-  //db.close();
-//});
 
 var uri = "mongodb+srv://Azzaid:cdOWFJqrHLI9VNVM@azzaidmdb-r422z.mongodb.net/test";
 
@@ -33,7 +25,14 @@ var sampleData = [
   formatInput('Oreo', 437, 18.0, 63),
 ];
 
+
+
 class App extends Component {
+  constructor (){
+    super();
+    fetch
+  }
+
   render() {
     return (
       <MuiThemeProvider>
