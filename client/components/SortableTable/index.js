@@ -20,7 +20,6 @@ class SortableTable extends React.Component {
       sortedBy: "none",
       page: 0,
       rowsPerPage: 5,
-      data: this.props.data,
     };
   }
   
@@ -32,11 +31,11 @@ class SortableTable extends React.Component {
       order = 'asc';
     }
     
-    if (this.state.data) {
+    if (this.props.data.length > 0) {
       const data =
         order === 'desc'
-          ? this.state.data.sort((a, b) => (b[sortedBy] < a[sortedBy] ? -1 : 1))
-          : this.state.data.sort((a, b) => (a[sortedBy] < b[sortedBy] ? -1 : 1));
+          ? this.props.data.sort((a, b) => (b[sortedBy] < a[sortedBy] ? -1 : 1))
+          : this.props.data.sort((a, b) => (a[sortedBy] < b[sortedBy] ? -1 : 1));
       this.setState({ data, order, sortedBy });
     } else {
       this.setState({order, sortedBy});
@@ -52,7 +51,8 @@ class SortableTable extends React.Component {
   };
   
   render() {
-      const { data, order, sortedBy, rowsPerPage, page } = this.state;
+      let data = this.props.data;
+      const {order, sortedBy, rowsPerPage, page } = this.state;
       const emptyRows = rowsPerPage - data.length;
     
       return (
@@ -60,7 +60,7 @@ class SortableTable extends React.Component {
           <Table>
             <SortableTableHeader order={order} sortedBy={sortedBy} columns={this.props.columns} sortData={this.sortData}/>
             <TableBody>
-              { data ?
+              { data.length > 0 ?
                 data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(entry => {
                   return (
                     <TableRow
@@ -94,7 +94,7 @@ class SortableTable extends React.Component {
           </Table>
           <TablePagination
             component="div"
-            count={data ? data.length : 0}
+            count={data.length > 0 ? data.length : 0}
             rowsPerPage={rowsPerPage}
             page={page}
             backIconButtonProps={{

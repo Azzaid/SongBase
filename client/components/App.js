@@ -23,13 +23,14 @@ export default class App extends Component {
   requestData = (artist, song, genre, year) => {
     fetch('/info/'+(artist?artist:'_')+'/'+(song?song:'_')+'/'+(genre?genre:'_')+'/'+(year?year:'_'))
     .then(res => res.json())
-    .then(data => {
-      console.log("reqester got from db", data);
-      this.setState({data});
+    .then(songlist => {
+      console.log("requester got from db", songlist);
+      this.setState({data:songlist});
     });
   };
 
   render() {
+    console.log("app state in render is:", this.state);
     return (
       <MuiThemeProvider>
       <div className="App">

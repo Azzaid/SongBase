@@ -34,6 +34,9 @@ class SearchField extends Component {
         type="search"
         placeholder="All"
         margin="normal"
+        onChange={(event)=>{
+          this.setState({song:event.target.value});
+          this.props.search(this.state.artist, event.target.value, this.state.genre, this.state.year)}}
       />
       <TextField
         id="searchByGenre"
