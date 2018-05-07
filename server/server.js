@@ -7,11 +7,10 @@ var dbRequester = require('./routes/dbRequest.js');
 var path = require('path');
 var app = express();
 
-app.set('views', path.join(__dirname, '../client'));
 app.use(express.static(path.join(__dirname, '../client')));
 
 app.use('/', mainPageRouter);
-app.use('/info/', dbRequester);
+app.use('/info', dbRequester);
 
 
 

@@ -3,17 +3,22 @@
  */
 var express = require('express');
 var router = express.Router();
-var MongoClient = require('mongodb');
+var mongoose = require('mongoose');
+var songModel = require('../models/song');
 
-//var uri = "mongodb://Azzaid:cdOWFJqrHLI9VNVM@azzaidmdb-shard-00-00-r422z.mongodb.net:27017,azzaidmdb-shard-00-01-r422z.mongodb.net:27017,azzaidmdb-shard-00-02-r422z.mongodb.net:27017/test?ssl=true&replicaSet=AzzaidMDB-shard-0&authSource=admin";
-//MongoClient.connect(uri, function(err, db) {
-//if (err) throw err;
-//console.log("Database created!");
-//db.close();
-//});
+router.get('/', function(req, res){
+  songModel.find((error, songsList)=>{
+    res.json(songsList);
+  });});
 
-router.get('/:', function(req, res){
-  res.json('index');
-});
+router.get('/:artist/:song/:genre/:year', function(req, res){
+  let artistSearchRegex=new RegExp((req.params.artist==='_')?'.*':req.params.artist+'.*');
+  let songSearchRegex=new RegExp((req.params.song==='_')?'.*':req.params.song+'.*');
+  let genreSearchRegex=new RegExp((req.params.genre==='_')?'.*':req.params.genre+'.*');
+  let yearSearchRegex=new RegExp((req.params.year==='_')?'.*':req.params.year+'.*');
+  songModel.find({artist:{$regex: artistSearchRegex, $options: 'i'}, song:{$regex: songSearchRegex, $options: 'i'}},(error, songsList)=>{
+    res.json(songsList);
+  });});
+  
 
 module.exports = router;

@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './css/index.css';
 import App from './components/App';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+fetch('/info/')
+  .then(res => res.json())
+  .then(data => {
+    ReactDOM.render(<App data={data}/>, document.getElementById('root'));
+  });
