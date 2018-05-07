@@ -20,9 +20,9 @@ class SearchField extends Component {
       <div>
       <TextField
         id="searchByArtist"
-        label="Artist"
+        label="Исполнитель"
         type="search"
-        placeholder="All"
+        placeholder="Все"
         margin="normal"
         onChange={(event)=>{
           this.setState({artist:event.target.value});
@@ -30,9 +30,9 @@ class SearchField extends Component {
       />
       <TextField
         id="searchBySong"
-        label="Song"
+        label="Песня"
         type="search"
-        placeholder="All"
+        placeholder="Все"
         margin="normal"
         onChange={(event)=>{
           this.setState({song:event.target.value});
@@ -40,17 +40,23 @@ class SearchField extends Component {
       />
       <TextField
         id="searchByGenre"
-        label="Artist"
+        label="Жанр"
         type="search"
-        placeholder="Genre"
+        placeholder="Все"
         margin="normal"
+        onChange={(event)=>{
+          this.setState({genre:event.target.value});
+          this.props.search(this.state.artist, this.state.song, event.target.value, this.state.year)}}
       />
       <TextField
         id="searchByYear"
-        label="Year"
+        label="Год"
         type="search"
-        placeholder="Year"
+        placeholder="Все"
         margin="normal"
+        onChange={(event)=>{
+          this.setState({year:event.target.value});
+          this.props.search(this.state.artist, this.state.song, this.state.genre, event.target.value)}}
       />
       </div>
     )
