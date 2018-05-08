@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import '../css/App.css';
 import SortableTable from './SortableTable';
 import SearchField from './SearchField';
-import Paper from 'material-ui/Paper';
-import { withTheme } from 'material-ui/styles'
 
 const columnData = [
   { id: 'artist', disablePadding: false, alignTooltipToLeft:false, label: 'Исполнитель' },
@@ -30,10 +27,10 @@ class App extends Component {
 
   render() {
     return (
-      <Paper>
-        <SortableTable data = {this.state.data} columns={columnData} />
+      <div>
+        <SortableTable data = {this.state.data} columns={columnData}/>
         <SearchField search={this.requestData}/>
-      </Paper>
+      </div>
     );
   }
 };

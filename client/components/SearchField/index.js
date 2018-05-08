@@ -3,6 +3,7 @@
  */
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
+import Paper from 'material-ui/Paper';
 
 class SearchField extends Component {
   constructor (props){
@@ -17,7 +18,7 @@ class SearchField extends Component {
 
   render () {
     return(
-      <div>
+      <Paper>
       <TextField
         id="searchByArtist"
         label="Исполнитель"
@@ -58,7 +59,7 @@ class SearchField extends Component {
           this.setState({year:event.target.value});
           this.props.search(this.state.artist, this.state.song, this.state.genre, event.target.value)}}
       />
-      </div>
+      </Paper>
     )
   }
 };
