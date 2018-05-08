@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import theme from './components/theme';
+import theme from './components/themes/defaultDarktheme';
 
 fetch('/info/')
   .then(res => res.json())

@@ -6,11 +6,7 @@ import { createMuiTheme } from 'material-ui/styles';
 
 const theme = createMuiTheme({
   palette: {
-    type: 'dark',
-    primary: {
-      main: '#F333F3',
-      contrastText: '#F33333',
-    }
+    type: "dark",
   }});
 
 export default theme;
