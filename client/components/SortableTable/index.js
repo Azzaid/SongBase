@@ -10,6 +10,7 @@ import Table, {
 } from 'material-ui/Table';
 import Paper from 'material-ui/Paper';
 import SortableTableHeader from './header';
+import { withTheme } from 'material-ui/styles'
 
 class SortableTable extends React.Component {
   constructor(props) {
@@ -111,4 +112,4 @@ class SortableTable extends React.Component {
   }
 }
 
-export default SortableTable
+export default SortableTable;

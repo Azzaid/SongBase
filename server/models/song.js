@@ -12,7 +12,7 @@ var songSchema = mongoose.Schema({
   artist: String,
   song: String,
   genre: String,
-  year: Number,
+  year: String,
 });
 
 module.exports = dbConnection.model('Song', songSchema);
