@@ -10,11 +10,13 @@ import Table, {
 } from 'material-ui/Table';
 import Paper from 'material-ui/Paper';
 import SortableTableHeader from './header';
+import { withStyles } from 'material-ui/styles';
+import styles from '../../css/app';
 
 class SortableTable extends React.Component {
   constructor(props) {
     super(props);
-    
+    console.log('table props is:', props);
     this.state = {
       order: 'asc',
       sortedBy: "none",
@@ -51,14 +53,15 @@ class SortableTable extends React.Component {
   };
   
   render() {
-      let data = this.props.data;
-      const {order, sortedBy, rowsPerPage, page } = this.state;
+      const {data, classes, columns} = this.props;
+      const {order, sortedBy, rowsPerPage, page} = this.state;
       const emptyRows = rowsPerPage - data.length;
     
       return (
-        <Paper>
-          <Table>
-            <SortableTableHeader order={order} sortedBy={sortedBy} columns={this.props.columns} sortData={this.sortData}/>
+        <div>
+        <Paper className={classes.tablePaperUnderlay}>
+          <Table className={classes.table}>
+            <SortableTableHeader order={order} sortedBy={sortedBy} columns={columns} sortData={this.sortData}/>
             <TableBody>
               { data.length > 0 ?
                 data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(entry => {
@@ -107,8 +110,9 @@ class SortableTable extends React.Component {
             onChangeRowsPerPage={this.changeRowsPerPage}
           />
         </Paper>
+        </div>
       )
   }
 }
 
-export default SortableTable
+export default withStyles(styles)(SortableTable);
