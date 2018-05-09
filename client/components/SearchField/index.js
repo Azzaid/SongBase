@@ -4,6 +4,8 @@
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
+import { withStyles } from 'material-ui/styles';
+import styles from '../../css/app';
 
 class SearchField extends Component {
   constructor (props){
@@ -18,7 +20,7 @@ class SearchField extends Component {
 
   render () {
     return(
-      <Paper>
+      <Paper className={this.props.classes.filterPaperUnderlay}>
       <TextField
         id="searchByArtist"
         label="Исполнитель"
@@ -64,4 +66,4 @@ class SearchField extends Component {
   }
 };
 
-export default SearchField;
+export default withStyles(styles)(SearchField);

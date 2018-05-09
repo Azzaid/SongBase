@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import SortableTable from './SortableTable';
 import SearchField from './SearchField';
+import Typography from 'material-ui/Typography';
+import { withStyles } from 'material-ui/styles';
+import styles from '../css/app';
 
 const columnData = [
   { id: 'artist', disablePadding: false, alignTooltipToLeft:false, label: 'Исполнитель' },
@@ -26,8 +29,14 @@ class App extends Component {
   };
 
   render() {
+    const classes = this.props.classes;
+    
     return (
-      <div>
+      <div className={classes.app}>
+        <Typography variant="display3" align='center' className={classes.mainHeader}>
+          Song base
+        </Typography>
+        <img src="../Img/flameGuitar.png" className={classes.backgroundImage}/>
         <SortableTable data = {this.state.data} columns={columnData}/>
         <SearchField search={this.requestData}/>
       </div>
@@ -35,4 +44,4 @@ class App extends Component {
   }
 };
 
-export default App;
+export default withStyles(styles)(App);
