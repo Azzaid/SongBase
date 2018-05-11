@@ -1,6 +1,6 @@
 {
   "name": "SongBase",
-  "version": "0.3.0",
+  "version": "0.5.0",
   "private": true,
   "dependencies": {
     "@material-ui/icons": "^1.0.0-beta.43",
@@ -25,6 +25,6 @@
   },
   "scripts": {
     "webpack": "webpack",
-    "start": "npm run webpack && nodemon --exec babel-node -- bin/www"
+    "start": "npm node server/server"
   }
 }
