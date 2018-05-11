@@ -25,6 +25,6 @@
   },
   "scripts": {
     "webpack": "webpack",
-    "start": "npm node server/server"
+    "start": "node ./server/server"
   }
 }

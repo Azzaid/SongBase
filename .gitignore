@@ -10,7 +10,6 @@ package-lock.json
 # production
 /build
 /.idea
-bundle.js
 
 # misc
 .DS_Store
